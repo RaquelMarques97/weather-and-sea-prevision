@@ -1,15 +1,21 @@
+
 body {
-width:100vw;
+  margin-left:10px;
 background-color: gray;
 color:#ffffff;
   justify-content: center;
 }
 
 .outer {
+  width:100%;
   overflow: hidden;
   flex-wrap: nowrap;
   position: relative;
   overflow-x: scroll;
 
   -webkit-overflow-scrolling: touch;
+}
+
+#hours{
+  width:100vw;
 }
