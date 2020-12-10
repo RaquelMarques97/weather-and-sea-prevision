@@ -21,11 +21,11 @@ function load(){
       var sunrisem=sunrise.getMinutes();
    
       $("#temp").text(Math.round(data.current.temp) + `ºC`);
-      $("#humidity").text(`humidade: ` + Math.round(data.current.humidity) + `%`);
+      $("#humidity").text(`Hr: ` + Math.round(data.current.humidity) + `%`);
       $('#current-icon').load(`animated/${img}.svg`);
       $("#vel").text( (data.current.wind_speed * 3.6).toFixed(1) + `km/h`);
       $("#dir").text( data.current.wind_deg + `º`);
-      $("#sensation").text(`sensação:` + Math.round(data.current.feels_like) + `ºC`);
+      $("#sensation").text(`sens:` + Math.round(data.current.feels_like) + `ºC`);
       $("#description").text(data.current.weather[0].description);
       $("#sunset").text(`${sunseth}:${sunsetm}`);
       $("#sunrise").text(`${sunriseh}:${sunrisem}`);

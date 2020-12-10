@@ -1,10 +1,13 @@
 body {
+width:100vw;
+overflow: hidden;
 background-color: gray;
 color:#ffffff;
   justify-content: center;
 }
 
 .outer {
+  overflow: hidden;
   flex-wrap: nowrap;
   position: relative;
   overflow-x: scroll;
