@@ -1,9 +1,9 @@
 
 body {
-  margin-left:10px;
+  overflow:hidden;
 background-color: gray;
 color:#ffffff;
-  justify-content: center;
+
 }
 
 .outer {
