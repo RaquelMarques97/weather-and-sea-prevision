@@ -7,17 +7,12 @@ color:#ffffff;
 }
 
 .outer {
-  width:110%;
   overflow: hidden;
   flex-wrap: nowrap;
   position: relative;
   overflow-x: scroll;
 
   -webkit-overflow-scrolling: touch;
-}
-
-#hours{
-  width:100vw;
 }
 
 
