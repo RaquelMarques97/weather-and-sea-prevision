@@ -46,11 +46,13 @@ function load(){
           )
           .append($('<div class="hr-icon">').load(`animated/${hour.weather[0].icon}.svg`))
           .append($('<div class="hr-temp">').text(Math.round(hour.temp) + `ºC`))
-          .append($('<div class="hr-pop">').text(Math.round(hour.pop) + `%`));
+          .append($('<div style="display:flex; position:absolute;margin-left:15px;" class="hr-pop">').text(Math.round(hour.pop) + `%`)).append('<img style="height:20px;margin-left:30px;" src="animated/raindrop.png"/>'); 
   
         $('#hours .list').append(element);     
   
       });
+
+     
 
       var days = data.daily;
       days.forEach(day=> {
@@ -65,8 +67,8 @@ function load(){
         weekday[6] = "Sábado";
         
         $('#day').append('<p style="font-weight:bold;height:64px;margin:0;">'+weekday[date.getDay()]+'</p>');
-        $('#raindrop').append('<img style="height:38px;  margin-bottom:24px;" src="animated/raindrop.png"/>')
-        $('#day-pop').append('<p style="height:64px;margin:0;">'+Math.round(day.pop)+'%</p>')
+        $('#raindrop').append('<img style="height:38px;  margin-bottom:24px;" src="animated/raindrop.png"/>');
+        $('#day-pop').append('<p style="height:64px;margin:0;">'+Math.round(day.pop)+'%</p>');
         $('#day-icon').append($('<div  class="day-icon">').load(`animated/${day.weather[0].icon}.svg`));       
         $('#day-temps').append('<p style="height:64px;margin:0;">'+Math.round(day.temp.max)+'º/'+Math.round(day.temp.min)+'º</p>');
       });
