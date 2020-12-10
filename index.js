@@ -1,6 +1,14 @@
 setInterval(function() {
-  load();
+  reloadPage();  
 }, 15*60*1000); 
+
+function reloadPage(){
+  location.reload();
+}
+
+$(document).ready(function() {
+  load();
+ });
 
 function load(){
   $.get("https://api.openweathermap.org/data/2.5/onecall?lat=37.17823140510965&lon=-7.4497216680432174&units=metric&lang=pt&appid=12c1168f34c81c351be0582a533ebf58", function(data, status) {
@@ -29,6 +37,7 @@ function load(){
       
   
       hours.forEach(hour => {
+       
         var time = new Date(hour.dt * 1000);
   
         var element = $('<li>')
@@ -37,7 +46,7 @@ function load(){
             $('<h3>')
             .addClass('hour')
             .text(time.getHours() + ":00")
-          )
+          ) 
           .append($('<div class="hr-icon">').load(`animated/${hour.weather[0].icon}.svg`))
           .append($('<div class="hr-temp">').text(Math.round(hour.temp) + `º`))
           .append($('<div style="display:flex; position:absolute;margin-left:15px;" class="hr-pop">').text(Math.round(hour.pop) + `%`)).append('<img style="height:20px;margin-left:30px;" src="animated/raindrop.png"/>'); 
@@ -45,8 +54,6 @@ function load(){
         $('#hours .list').append(element);     
   
       });
-
-     
 
       var days = data.daily;
       days.forEach(day=> {
@@ -68,7 +75,6 @@ function load(){
     });
 }
 
-  $(document).ready(function() {
-   load();
-  });
+ 
 
+ 
