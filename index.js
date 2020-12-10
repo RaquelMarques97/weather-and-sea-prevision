@@ -3,11 +3,7 @@ setInterval(function() {
 }, 15*60*1000); 
 
 function load(){
-  $.get("https://api.openweathermap.org/data/2.5/onecall?lat=37.17823140510965&lon=-7.4497216680432174&units=metric&lang=pt&appid=12c1168f34c81c351be0582a533ebf58", function(data, status) {});
-}
-
-  $(document).ready(function() {
-    $.get("https://api.openweathermap.org/data/2.5/onecall?lat=37.17823140510965&lon=-7.4497216680432174&units=metric&lang=pt&appid=12c1168f34c81c351be0582a533ebf58", function(data, status) {
+  $.get("https://api.openweathermap.org/data/2.5/onecall?lat=37.17823140510965&lon=-7.4497216680432174&units=metric&lang=pt&appid=12c1168f34c81c351be0582a533ebf58", function(data, status) {
   console.log(data);
       var img = data.current.weather[0].icon;
       var sunset=new Date(data.current.sunset*1000);
@@ -70,5 +66,9 @@ function load(){
         $('#day-temps').append('<p style="height:64px;margin:0;">'+Math.round(day.temp.max)+'º/'+Math.round(day.temp.min)+'º</p>');
       });
     });
+}
+
+  $(document).ready(function() {
+   load();
   });
 
