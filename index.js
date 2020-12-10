@@ -64,9 +64,10 @@ function load(){
         weekday[5] = "Sexta";
         weekday[6] = "Sábado";
         
-        $('#day').append('<p style="height:64px;margin:0;">'+weekday[date.getDay()]+'</p>');
-        $('#day-pop').append('<p style="height:64px;margin:0;">'+Math.round(day.pop)+'%</p>');
-        $('#day-icon').append($('<div class="day-icon">').load(`animated/${day.weather[0].icon}.svg`));       
+        $('#day').append('<p style="font-weight:bold;height:64px;margin:0;">'+weekday[date.getDay()]+'</p>');
+        $('#raindrop').append('<img style="height:38px;  margin-bottom:24px;" src="animated/raindrop.png"/>')
+        $('#day-pop').append('<p style="height:64px;margin:0;">'+Math.round(day.pop)+'%</p>')
+        $('#day-icon').append($('<div  class="day-icon">').load(`animated/${day.weather[0].icon}.svg`));       
         $('#day-temps').append('<p style="height:64px;margin:0;">'+Math.round(day.temp.max)+'º/'+Math.round(day.temp.min)+'º</p>');
       });
     });
