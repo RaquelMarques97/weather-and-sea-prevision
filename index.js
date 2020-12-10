@@ -13,13 +13,23 @@ function load(){
   
       var img = data.current.weather[0].icon;
       console.log(data);
+      var sunset=new Date(data.current.sunset*1000);
+      var sunseth=sunset.getHours();
+      var sunsetm=sunset.getMinutes();
+      var sunrise=new Date(data.current.sunrise*1000);
+      var sunriseh=sunrise.getHours();
+      var sunrisem=sunrise.getMinutes();
+   
       $("#temp").text(Math.round(data.current.temp) + `ºC`);
       $("#humidity").text(`humidade: ` + Math.round(data.current.humidity) + `%`);
       $('#current-icon').load(`animated/${img}.svg`);
-      $("#vel").text(`vento: ` + (data.current.wind_speed * 3.6).toFixed(1) + `km/h`);
-      $("#dir").text(`direcção: ` + data.current.wind_deg + `º`);
+      $("#vel").text( (data.current.wind_speed * 3.6).toFixed(1) + `km/h`);
+      $("#dir").text( data.current.wind_deg + `º`);
       $("#sensation").text(`sensação:` + Math.round(data.current.feels_like) + `ºC`);
       $("#description").text(data.current.weather[0].description);
+      $("#sunset").text(`${sunseth}:${sunsetm}`);
+      $("#sunrise").text(`${sunriseh}:${sunrisem}`);
+  
   
       var hours = data.hourly;
       
@@ -44,12 +54,21 @@ function load(){
 
       var days = data.daily;
       days.forEach(day=> {
-        console.log(day);
-
+        var date = new Date(day.dt * 1000);       
+        var weekday = new Array(7);
+        weekday[0] = "Domingo";
+        weekday[1] = "Segunda";
+        weekday[2] = "Terça";
+        weekday[3] = "Quarta";
+        weekday[4] = "Quinta";
+        weekday[5] = "Sexta";
+        weekday[6] = "Sábado";
         
+        $('#day').append('<p style="height:64px;margin:0;">'+weekday[date.getDay()]+'</p>');
+        $('#day-pop').append('<p style="height:64px;margin:0;">'+Math.round(day.pop)+'%</p>');
+        $('#day-icon').append($('<div class="day-icon">').load(`animated/${day.weather[0].icon}.svg`));       
+        $('#day-temps').append('<p style="height:64px;margin:0;">'+Math.round(day.temp.max)+'º/'+Math.round(day.temp.min)+'º</p>');
       });
-
-
     });
   });
 
