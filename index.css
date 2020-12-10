@@ -1,0 +1,7 @@
+.outer {
+  flex-wrap: nowrap;
+  position: relative;
+  overflow-x: scroll;
+
+  -webkit-overflow-scrolling: touch;
+}
