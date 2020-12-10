@@ -23,6 +23,7 @@ function load(){
    
       $("#temp").text(Math.round(data.current.temp) + `ºC`);
       $("#humidity").text(`Hr: ` + Math.round(data.current.humidity) + `%`);
+      $("#uv").text(`UV: ` + Math.round(data.current.uvi) + ``);
       $('#current-icon').load(`animated/${img}.svg`);
       $("#vel").text( (data.current.wind_speed * 3.6).toFixed(1) + `km/h`);
       $("#dir").text( data.current.wind_deg + `º`);
