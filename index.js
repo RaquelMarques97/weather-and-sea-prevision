@@ -7,10 +7,11 @@ function reloadPage(){
 }
 
 $(document).ready(function() {
-  load();
+  loadMeteo();
+  loadTides();
  });
 
-function load(){
+function loadMeteo(){
   $.get("https://api.openweathermap.org/data/2.5/onecall?lat=37.17823140510965&lon=-7.4497216680432174&units=metric&lang=pt&appid=12c1168f34c81c351be0582a533ebf58", function(data, status) {
   console.log(data);
       var img = data.current.weather[0].icon;
@@ -76,6 +77,22 @@ function load(){
     });
 }
 
- 
+function loadTides(){
+  $.getJSON('mares.json', function (data) {  
+    
+  var mares=data.mares;
+  //console.log(mares);
+  var newarray=new Array(mares[0],mares[1],mares[2],mares[3]);
+    console.log(newarray);
 
- 
+    newarray.forEach((mare)=>{  
+    console.log(mare.fenomeno);
+    $('#mares').append('<p>'+mare.data+'</p>');
+    $('#time').append('<p>'+mare.fenomeno+'</p>');
+    });
+  });
+  
+
+
+  }
+
