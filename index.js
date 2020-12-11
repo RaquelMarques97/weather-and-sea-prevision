@@ -81,16 +81,23 @@ function loadTides(){
   $.getJSON('mares.json', function (data) {  
     
   var mares=data.mares;
-  //console.log(mares);
-  var newarray=new Array(mares[0],mares[1],mares[2],mares[3]);
-    console.log(newarray);
+  mares.forEach(fen=>{
+    if(fen.fenomeno==="Quarto minguante"||fen.fenomeno==="Quarto crescente"||fen.fenomeno==="Lua nova" ||fen.fenomeno==="Lua cheia"){
+      $('#moon-time').append('<p>'+fen.data+'</p>');
+    $('#moon').append('<p>'+fen.fenomeno+'</p>');    
+    }
+  
+  })
+  console.log(mares);
+  var newarray=new Array(mares[0],mares[1],mares[2],mares[3]); 
 
-    newarray.forEach((mare)=>{  
-    console.log(mare.fenomeno);
+  newarray.forEach((mare)=>{  
     $('#mares').append('<p>'+mare.data+'</p>');
-    $('#time').append('<p>'+mare.fenomeno+'</p>');
-    });
+    $('#time').append('<p>'+mare.fenomeno+'</p>');    
+    });    
   });
+  
+
   
 
 
