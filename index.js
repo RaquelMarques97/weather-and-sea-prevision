@@ -78,28 +78,29 @@ function loadMeteo(){
 }
 
 function loadTides(){
-  $.getJSON('mares.json', function (data) {  
-    
-  var mares=data.mares;
-  mares.forEach(fen=>{
-    if(fen.fenomeno==="Quarto minguante"||fen.fenomeno==="Quarto crescente"||fen.fenomeno==="Lua nova" ||fen.fenomeno==="Lua cheia"){
-      $('#moon-time').append('<p>'+fen.data+'</p>');
-    $('#moon').append('<p>'+fen.fenomeno+'</p>');    
-    }
-  
-  })
-  console.log(mares);
-  var newarray=new Array(mares[0],mares[1],mares[2],mares[3]); 
+  $.getJSON('mares.json', function (data) {      
+    var mares=data.mares;
+    console.log(mares);    
 
-  newarray.forEach((mare)=>{  
-    $('#mares').append('<p>'+mare.data+'</p>');
-    $('#time').append('<p>'+mare.fenomeno+'</p>');    
+    //mares do dia
+    var newarray=new Array(mares[0],mares[1],mares[2],mares[3]); 
+
+    newarray.forEach((mare)=>{  
+      $('#mares').append('<p>'+mare.data+'</p>');
+      $('#time').append('<p>'+mare.fenomeno+'</p>');    
+    });        
+      
+    //luas
+    mares.forEach(fen=>{
+      if(fen.fenomeno==="Quarto minguante"||fen.fenomeno==="Quarto crescente"||fen.fenomeno==="Lua nova" ||fen.fenomeno==="Lua cheia"){
+        $('#moon-time').append('<p>'+fen.data+'</p>');      
+        var string=fen.fenomeno;
+        string2=string.replace(' ','-');
+console.log(string2);
+        $('#moon').append(`<img style="height:35px; width:35px; margin-top:2px;" src="animated/${string2}.png"/>`);  
+      };
+
     });    
-  });
-  
-
-  
-
-
-  }
+  });  
+}
 
