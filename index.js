@@ -97,7 +97,7 @@ function loadTides(){
         var string=fen.fenomeno;
         string2=string.replace(' ','-');
 console.log(string2);
-        $('#moon').append(`<img style="height:35px; width:35px; margin-top:2px;" src="animated/${string2}.png"/>`);  
+        $('#moon').append(`<img style="height:35px; width:35px;" src="animated/${string2}.png"/>`);  
       };
 
     });    
